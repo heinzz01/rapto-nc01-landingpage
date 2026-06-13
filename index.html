@@ -14,6 +14,15 @@
 </head>
 <body>
 
+<svg width="0" height="0" class="svg-defs" aria-hidden="true" focusable="false">
+  <filter id="wind" x="-25%" y="-25%" width="150%" height="150%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.011 0.016" numOctaves="2" seed="4" result="noise">
+      <animate attributeName="baseFrequency" dur="16s" values="0.011 0.016;0.014 0.011;0.009 0.02;0.011 0.016" repeatCount="indefinite"/>
+    </feTurbulence>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+
 <header class="header" id="top">
   <div class="container header-inner">
     <a href="#top" class="logo" aria-label="RAPTO — zum Seitenanfang">
@@ -32,7 +41,10 @@
   <div class="container hero-grid">
     <div class="hero-copy">
       <p class="eyebrow">NC-01 NASAL PERFORMANCE CLIP</p>
-      <h1 class="display"><span class="accent">MEHR LUFT</span>, WENN ES DRAUF ANKOMMT.</h1>
+      <h1 class="display hero-headline">
+        <span class="hl-air">MEHR <span class="hl-luft">LUFT</span></span>
+        <span class="hl-rest">WENN ES DRAUF ANKOMMT.</span>
+      </h1>
       <p class="hero-sub">Mechanische Öffnung der Nasenklappe für bis zu 27&nbsp;% mehr nasalen Luftfluss<sup><a href="#studien" aria-label="Studienreferenz 1">1</a></sup>. Entwickelt für Rennrad, Lauf und Triathlon.</p>
       <a href="#angebot" class="btn btn-solid btn-large">30 TAGE RISIKOFREI TESTEN</a>
       <p class="trust-line">STUDIENBASIERT · LATEXFREI · HÄLT ÜBER 8 STUNDEN</p>
