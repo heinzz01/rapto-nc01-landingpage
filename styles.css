@@ -1,0 +1,735 @@
+/* ============================================================
+   RAPTO NC-01 — Landingpage
+   Brand-Kit: Pitch Black / Ignition / White — mobile-first
+   ============================================================ */
+
+:root {
+  /* Farben — strikt nur diese drei + Graustufen.
+     --pitch ist aus den Produktbildern gesampelt (Hintergrund von
+     bild06-mechanik), damit die Bilder mit der Seite verschwimmen. */
+  --pitch:     #010101;
+  --ignition:  #F83F17;
+  --white:     #FFFFFF;
+  --grey-dim:  rgba(255, 255, 255, 0.65);
+  --grey-line: rgba(255, 255, 255, 0.12);
+
+  /* Typografie */
+  --font-display: 'Anton', sans-serif;
+  --font-body:    'Archivo', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  --header-height: 64px;
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 16px);
+}
+
+body {
+  background: var(--pitch);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- Typo-Bausteine ---------- */
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  color: var(--white);
+  font-size: clamp(34px, 7vw, 64px);
+  margin-bottom: 20px;
+}
+
+.display .accent { color: var(--ignition); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--grey-dim);
+  margin-bottom: 16px;
+}
+
+.badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--white);
+  border: 1px solid var(--ignition);
+  border-radius: 999px;
+  padding: 7px 16px;
+  margin-bottom: 20px;
+}
+
+.sub-headline {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.body-text {
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--grey-dim);
+  max-width: 540px;
+  margin-bottom: 28px;
+}
+
+.body-text sup a,
+.hero-sub sup a {
+  color: var(--ignition);
+  font-size: 0.7em;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  white-space: nowrap;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 15px 28px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn:hover { transform: translateY(-2px); }
+
+.btn-solid {
+  background: var(--ignition);
+  border-color: var(--ignition);
+  color: var(--white);
+}
+.btn-solid:hover { background: #d93512; border-color: #d93512; }
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--white);
+  color: var(--white);
+}
+.btn-outline:hover { background: var(--white); color: var(--pitch); }
+
+.btn-large { padding: 18px 36px; font-size: 15px; }
+.btn-small { padding: 10px 18px; font-size: 12px; }
+
+/* ============================================================
+   STICKY HEADER
+   ============================================================ */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--header-height);
+  background: rgba(2, 1, 1, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--grey-line);
+}
+
+.header-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.logo-img {
+  height: 24px;
+  width: auto;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .logo-img { height: 30px; }
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.header-garantie {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--grey-dim);
+  display: none;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  position: relative;
+  padding: 56px 0 64px;
+  overflow: hidden;
+}
+
+/* Dezente diagonale Speedlines (Verpackungs-Detail) */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -55deg,
+    transparent 0px,
+    transparent 90px,
+    rgba(248, 63, 23, 0.05) 90px,
+    rgba(248, 63, 23, 0.05) 94px
+  );
+  pointer-events: none;
+}
+
+.hero-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.hero .display { font-size: clamp(42px, 9vw, 84px); }
+
+/* Hero-Headline im "HUNT YOUR LIMIT"-Stil:
+   "MEHR LUFT" schräg/oblique, zweite Zeile nach oben gezogen,
+   sodass "WENN" das Ende von "MEHR LUFT" leicht überlappt. */
+.hero-headline {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 0.92;
+  letter-spacing: 0.005em;
+}
+
+.hl-top {
+  color: var(--ignition);
+  transform: skewX(-11deg);
+  transform-origin: left bottom;
+  position: relative;
+  z-index: 1;
+}
+
+.hl-bottom {
+  position: relative;
+  z-index: 2;            /* "WENN" liegt über "MEHR LUFT" und verdeckt es leicht */
+  margin-top: -0.14em;   /* nach oben gezogen → verdeckt "MEHR LUFT" etwas */
+}
+
+.hero-sub {
+  font-weight: 300;
+  font-size: 17px;
+  color: var(--grey-dim);
+  max-width: 480px;
+  margin-bottom: 28px;
+}
+
+.trust-line {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--grey-dim);
+  margin-top: 18px;
+}
+
+.hero-media img {
+  width: 100%;
+}
+
+/* ============================================================
+   CONTENT-SEKTIONEN (Zickzack ab Desktop)
+   ============================================================ */
+.section {
+  padding: 72px 0;
+  border-top: 1px solid var(--grey-line);
+}
+
+/* Kein eigener Hintergrund-Tint: die Bilder sollen mit dem
+   Seiten-Schwarz verschwimmen. Rhythmus kommt vom Zickzack + Dividern. */
+.section-alt {
+  background: transparent;
+}
+
+.section-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.section-media img {
+  width: 100%;
+}
+
+.section-copy-center {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 48px;
+}
+.section-copy-center .body-text { margin-left: auto; margin-right: auto; }
+
+/* ---------- Video-Platzhalter (Sektion 1) ---------- */
+.video-placeholder {
+  position: relative;
+}
+
+.video-play-hint {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(2, 1, 1, 0.7);
+  border: 2px solid var(--ignition);
+  border-radius: 50%;
+  color: var(--white);
+  font-size: 22px;
+  padding-left: 5px;
+}
+
+.video-caption {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.7;
+  letter-spacing: 0.04em;
+  color: var(--grey-dim);
+  margin-top: 14px;
+}
+
+/* ============================================================
+   VERGLEICH (Sektion 7)
+   ============================================================ */
+.compare-wrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.compare-points li {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--grey-line);
+}
+
+.compare-points li:first-child { padding-top: 0; }
+.compare-points li:last-child { border-bottom: none; padding-bottom: 0; }
+
+.compare-points strong {
+  display: block;
+  font-weight: 600;
+  font-size: 17px;
+  margin-bottom: 6px;
+}
+
+.compare-points p {
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--grey-dim);
+}
+
+.compare-points sup a { color: var(--ignition); font-size: 0.7em; }
+
+.compare-outro {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.8;
+  letter-spacing: 0.04em;
+  color: var(--grey-dim);
+  text-align: center;
+  max-width: 620px;
+  margin: 40px auto 0;
+}
+
+.check {
+  color: var(--ignition);
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+.cross {
+  color: rgba(255, 255, 255, 0.35);
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+/* ============================================================
+   ANGEBOT
+   ============================================================ */
+.section-offer {
+  border-top: 2px solid var(--ignition);
+}
+
+.offer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin: 8px 0 32px;
+}
+
+.offer-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--grey-line);
+  border-radius: 10px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.02);
+  text-align: left;
+}
+
+.offer-card-featured {
+  border-color: var(--ignition);
+  background: rgba(248, 63, 23, 0.05);
+}
+
+.offer-flag {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--ignition);
+  color: var(--white);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.offer-media img {
+  border: 1px solid var(--grey-line);
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+
+.offer-name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 26px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.offer-qty {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--grey-dim);
+  margin: 4px 0 16px;
+}
+
+.offer-qty .accent { color: var(--ignition); }
+
+.offer-price {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 38px;
+  line-height: 1;
+  color: var(--white);
+}
+
+.offer-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--grey-dim);
+  margin: 6px 0 18px;
+}
+
+.offer-btn {
+  margin-top: auto;
+  width: 100%;
+}
+
+.garantie-line {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 28px;
+}
+
+.garantie-line-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq-container { max-width: 760px; }
+
+.faq-list { margin-top: 12px; }
+
+.faq-list details {
+  border-bottom: 1px solid var(--grey-line);
+}
+
+.faq-list summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 0;
+  font-weight: 600;
+  font-size: 17px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq-list summary::-webkit-details-marker { display: none; }
+
+.faq-icon {
+  flex-shrink: 0;
+  position: relative;
+  width: 16px;
+  height: 16px;
+}
+.faq-icon::before,
+.faq-icon::after {
+  content: "";
+  position: absolute;
+  background: var(--ignition);
+  transition: transform 0.2s ease;
+}
+.faq-icon::before {
+  top: 7px; left: 0;
+  width: 16px; height: 2px;
+}
+.faq-icon::after {
+  top: 0; left: 7px;
+  width: 2px; height: 16px;
+}
+details[open] .faq-icon::after { transform: scaleY(0); }
+
+.faq-list details p {
+  font-weight: 300;
+  color: var(--grey-dim);
+  padding: 0 32px 20px 0;
+  max-width: 640px;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  border-top: 1px solid var(--grey-line);
+  padding: 56px 0 40px;
+}
+
+.footer-heading {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--grey-dim);
+  margin-bottom: 16px;
+}
+
+.footer-refs {
+  list-style: decimal;
+  padding-left: 20px;
+}
+
+.footer-refs li {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.8;
+  color: var(--grey-dim);
+  margin-bottom: 10px;
+}
+
+.footer-block { margin-bottom: 32px; }
+
+.footer-disclaimer {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.8;
+  color: var(--grey-dim);
+  border-left: 2px solid var(--ignition);
+  padding-left: 14px;
+  max-width: 640px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin-bottom: 32px;
+}
+
+.footer-links a {
+  font-size: 14px;
+  color: var(--grey-dim);
+}
+.footer-links a:hover { color: var(--ignition); }
+
+.footer-bottom {
+  border-top: 1px solid var(--grey-line);
+  padding-top: 24px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--grey-dim);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* ============================================================
+   STICKY MOBILE CTA BAR
+   ============================================================ */
+.sticky-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 20px calc(12px + env(safe-area-inset-bottom));
+  background: rgba(2, 1, 1, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-top: 1px solid var(--grey-line);
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.sticky-cta.is-visible { transform: translateY(0); }
+
+.sticky-cta .btn { flex-shrink: 0; }
+
+.sticky-cta-note {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--grey-dim);
+}
+
+/* Platz schaffen, damit die Bar den Footer nicht verdeckt */
+body { padding-bottom: 0; }
+
+/* ============================================================
+   SCROLL-REVEAL (dezent, via IntersectionObserver)
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ============================================================
+   TABLET ≥ 768px
+   ============================================================ */
+@media (min-width: 768px) {
+  .container { padding: 0 32px; }
+
+  .header-garantie { display: inline; }
+
+  .hero { padding: 80px 0 96px; }
+
+  .hero-grid {
+    grid-template-columns: 1.1fr 1fr;
+    gap: 56px;
+  }
+
+  .section { padding: 96px 0; }
+
+  .section-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+  }
+
+  /* Zickzack: jede zweite Content-Sektion spiegeln */
+  .section:nth-of-type(even) .section-grid .section-copy { order: 2; }
+  .section:nth-of-type(even) .section-grid .section-media { order: 1; }
+
+  .compare-wrap {
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+  }
+
+  .offer-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    align-items: stretch;
+  }
+}
+
+/* ============================================================
+   DESKTOP > 1024px
+   ============================================================ */
+@media (min-width: 1024px) {
+  .section { padding: 120px 0; }
+
+  /* Sticky-Bar auf Desktop ausblenden — Header-CTA reicht */
+  .sticky-cta { display: none; }
+}
