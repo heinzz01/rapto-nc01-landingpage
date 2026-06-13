@@ -249,13 +249,13 @@ ul, ol { list-style: none; }
   transform: skewX(-11deg);
   transform-origin: left bottom;
   position: relative;
-  z-index: 1;
+  z-index: 2;            /* "MEHR LUFT" liegt VOR dem weißen Text */
 }
 
 .hl-bottom {
   position: relative;
-  z-index: 2;            /* "WENN" liegt über "MEHR LUFT" und verdeckt es leicht */
-  margin-top: -0.14em;   /* nach oben gezogen → verdeckt "MEHR LUFT" etwas */
+  z-index: 1;
+  margin-top: -0.14em;   /* weiße Zeile rückt hoch → "MEHR LUFT" überdeckt sie leicht */
 }
 
 .hero-sub {
