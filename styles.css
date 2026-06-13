@@ -233,31 +233,6 @@ ul, ol { list-style: none; }
 
 .hero .display { font-size: clamp(42px, 9vw, 84px); }
 
-/* Hero-Headline im "HUNT YOUR LIMIT"-Stil:
-   "MEHR LUFT" schräg/oblique, zweite Zeile nach oben gezogen,
-   sodass "WENN" das Ende von "MEHR LUFT" leicht überlappt. */
-.hero-headline {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  line-height: 0.92;
-  letter-spacing: 0.005em;
-}
-
-.hl-top {
-  color: var(--ignition);
-  transform: skewX(-11deg);
-  transform-origin: left bottom;
-  position: relative;
-  z-index: 2;            /* "MEHR LUFT" liegt VOR dem weißen Text */
-}
-
-.hl-bottom {
-  position: relative;
-  z-index: 1;
-  margin-top: -0.14em;   /* weiße Zeile rückt hoch → "MEHR LUFT" überdeckt sie leicht */
-}
-
 .hero-sub {
   font-weight: 300;
   font-size: 17px;
