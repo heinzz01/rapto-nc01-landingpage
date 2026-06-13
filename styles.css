@@ -233,43 +233,29 @@ ul, ol { list-style: none; }
 
 .hero .display { font-size: clamp(42px, 9vw, 84px); }
 
-.svg-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
-
-/* Hero-Headline wie auf der Verpackung: "MEHR LUFT" groß in Akzentfarbe,
-   "WENN ES DRAUF ANKOMMT." kleiner in Weiß darunter. "LUFT" atmet wie eine
-   Lunge (Skalierung + mitschwingender Glow), darüber ein dezenter Wind-Shimmer. */
-.hero-headline {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  line-height: 0.9;
+/* Hero-Headline als statisches Brush-Bild: bricht aus dem Text-Align aus und
+   steht links/rechts über (Bild-Hintergrund = Seiten-Schwarz → nahtlos).
+   Eyebrow, Body, CTA und Trust-Zeile bleiben am linken Rand. */
+.hero-headline-h1 {
+  margin: 4px 0 16px;
+  line-height: 0;
 }
 
-.hl-air { color: var(--ignition); }
-
-.hl-rest { font-size: 0.66em; color: var(--white); }
-
-.hl-luft {
-  display: inline-block;
-  transform-origin: 35% 72%;
-  filter: url(#wind);                       /* Wind-Shimmer */
-  animation: luft-breathe 4.6s ease-in-out infinite;
-  will-change: transform;
+.hero-headline-img {
+  display: block;
+  height: auto;
+  max-width: none;
+  /* Mobil: bis an beide Viewport-Ränder; Text bleibt um die Container-Padding eingerückt */
+  width: calc(100% + 40px);
+  margin-left: -20px;
 }
 
-@keyframes luft-breathe {
-  0%, 100% {
-    transform: scale(1);
-    text-shadow: 0 0 0 rgba(248, 63, 23, 0);
+@media (min-width: 768px) {
+  .hero-headline-img {
+    /* Desktop: links deutlich über den Text hinaus, rechts knapp in den Spalten-Gap */
+    width: calc(100% + 9vw);
+    margin-left: -7vw;
   }
-  44% {
-    transform: scale(1.06, 1.085);          /* einatmen — leicht stärker vertikal */
-    text-shadow: 0 0 30px rgba(248, 63, 23, 0.45);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hl-luft { animation: none; filter: none; }
 }
 
 .hero-sub {
