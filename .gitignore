@@ -5,3 +5,10 @@ Higgsfield/
 rapto-design/
 1344x576.png
 rapto-landing.html
+shopify-theme-live/
+
+# Interne Dateien — niemals ins öffentliche Repo
+CLAUDE.md
+PLAN-pdp-startseite.md
+Shopify scheme/
+memory/

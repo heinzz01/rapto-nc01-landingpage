@@ -1,0 +1,211 @@
+/* ============================================================
+   RAPTO NC-01 — Advertorial / Listicle (Pre-Sell)
+   Ergänzt styles.css. Nur Advertorial-spezifische Bausteine.
+   ============================================================ */
+
+/* ---------- Artikel-Kopf ---------- */
+.adv-article {
+  max-width: 760px;
+  padding-top: 48px;
+  padding-bottom: 8px;
+}
+
+.adv-disclosure {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--grey-dim);
+  border: 1px solid var(--grey-line);
+  border-radius: 999px;
+  padding: 5px 12px;
+  display: inline-block;
+  margin-bottom: 24px;
+}
+
+.adv-h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 1.02;
+  letter-spacing: 0.005em;
+  font-size: clamp(30px, 5.6vw, 52px);
+  margin-bottom: 28px;
+}
+
+.adv-h1 .accent { color: var(--ignition); }
+
+.adv-h1 sup a { color: var(--ignition); font-size: 0.4em; }
+
+/* ---------- Byline ---------- */
+.byline {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 0;
+  border-top: 1px solid var(--grey-line);
+  border-bottom: 1px solid var(--grey-line);
+  margin-bottom: 32px;
+}
+
+.byline-avatar {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--ignition);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 16px;
+  letter-spacing: 0.04em;
+}
+
+.byline-name {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--white);
+}
+
+.byline-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--grey-dim);
+  margin-top: 2px;
+}
+
+/* ---------- Kicker (Open-Loop-Zeile über dem Lead) ---------- */
+.adv-kicker {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--ignition);
+  margin-bottom: 14px;
+}
+
+/* ---------- Lead-Absatz ---------- */
+.lead {
+  font-weight: 300;
+  font-size: clamp(18px, 2.4vw, 21px);
+  line-height: 1.55;
+  color: var(--white);
+  margin-bottom: 24px;
+}
+
+.adv-jumplink {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--ignition);
+  border-bottom: 1px solid var(--ignition);
+  padding-bottom: 2px;
+}
+.adv-jumplink:hover { color: var(--white); border-color: var(--white); }
+
+/* ---------- Gründe: große Nummer ---------- */
+.reason-num {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(48px, 8vw, 76px);
+  line-height: 0.9;
+  color: var(--ignition);
+  margin-bottom: 12px;
+}
+
+/* Inline-Textlink-CTA statt fettem Button (advertorial liest sich als Fließtext) */
+.adv-inline-cta {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--white);
+  border-bottom: 2px solid var(--ignition);
+  padding-bottom: 2px;
+  transition: color 0.15s ease;
+}
+.adv-inline-cta:hover { color: var(--ignition); }
+
+/* ---------- Eisbad-Beweis ---------- */
+.adv-proof { border-top: 1px solid var(--grey-line); }
+
+.adv-video-ph {
+  max-width: 760px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--grey-line);
+  border-radius: 10px;
+  background:
+    repeating-linear-gradient(-55deg, transparent 0 90px,
+      rgba(248, 63, 23, 0.05) 90px 94px),
+    rgba(255, 255, 255, 0.02);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.adv-video-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.adv-video-ph .video-play-hint {
+  position: static;
+  transform: none;
+}
+
+.adv-video-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: var(--grey-dim);
+}
+
+/* Falls echtes Video eingesetzt wird */
+.adv-video {
+  display: block;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  border: 1px solid var(--grey-line);
+  border-radius: 10px;
+}
+
+/* ---------- Stimmen (Platzhalter-Stil, falls eingeschaltet) ---------- */
+.adv-voices-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.tcard {
+  border: 1px solid var(--grey-line);
+  border-radius: 10px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.tcard blockquote {
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--white);
+  margin-bottom: 14px;
+}
+
+.tcard figcaption {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--grey-dim);
+}
+
+@media (min-width: 768px) {
+  .adv-voices-grid { grid-template-columns: repeat(3, 1fr); }
+}
