@@ -5,7 +5,6 @@
 
 /* ---------- Artikel-Kopf ---------- */
 .adv-article {
-  max-width: 760px;
   padding-top: 48px;
   padding-bottom: 8px;
 }
@@ -30,6 +29,7 @@
   line-height: 1.02;
   letter-spacing: 0.005em;
   font-size: clamp(30px, 5.6vw, 52px);
+  max-width: 880px;
   margin-bottom: 28px;
 }
 
@@ -45,6 +45,7 @@
   padding: 18px 0;
   border-top: 1px solid var(--grey-line);
   border-bottom: 1px solid var(--grey-line);
+  max-width: 760px;
   margin-bottom: 32px;
 }
 
@@ -93,6 +94,7 @@
   font-size: clamp(18px, 2.4vw, 21px);
   line-height: 1.55;
   color: var(--white);
+  max-width: 760px;
   margin-bottom: 24px;
 }
 
